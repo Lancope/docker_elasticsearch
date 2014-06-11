@@ -1,4 +1,4 @@
-FROM munkyboy/java:quantal_7
+FROM lancope/java:quantal_7
 
 # install elastic search
 RUN apt-get install -yq wget
