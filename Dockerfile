@@ -2,9 +2,9 @@ FROM lancope/java:quantal_7
 
 # install elastic search
 RUN apt-get install -yq wget
-RUN wget --no-check-certificate -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.13.deb
-RUN dpkg -i elasticsearch-0.90.13.deb
-RUN rm elasticsearch-0.90.13.deb
+RUN wget --no-check-certificate -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb
+RUN dpkg -i elasticsearch-1.2.1.deb
+RUN rm elasticsearch-1.2.1.deb
 
 # add marvel for monitoring
 RUN /usr/share/elasticsearch/bin/plugin -i elasticsearch/marvel/latest
