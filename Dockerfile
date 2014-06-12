@@ -11,7 +11,6 @@ RUN /usr/share/elasticsearch/bin/plugin -i elasticsearch/marvel/latest
 
 # configure init script to run in the foreground (I don't like this, but the start script does lots of useful config/setup)
 RUN sed -i.bak 's/--start -b/--start/' /etc/init.d/elasticsearch
-RUN sed -i.bak 's/^DAEMON_OPTS="/DAEMON_OPTS="-f /' /etc/init.d/elasticsearch
 
 VOLUME ["/var/lib/elasticsearch", "/var/log/elasticsearch"]
 EXPOSE 9200 9300
