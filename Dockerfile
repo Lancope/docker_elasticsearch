@@ -12,11 +12,7 @@ RUN /usr/share/elasticsearch/bin/plugin -i elasticsearch/marvel/latest
 RUN /usr/share/elasticsearch/bin/plugin --install mobz/elasticsearch-head
 RUN /usr/share/elasticsearch/bin/plugin --install polyfractal/elasticsearch-inquisitor
 
-## allow for locking memory
-RUN sed -i.bak 's/^#MAX_LOCKED_MEMORY=.*/MAX_LOCKED_MEMORY=unlimited/' /etc/init.d/elasticsearch
-
-## set heap size (TODO: make configurable)
-RUN sed -i.bak 's/^#ES_HEAP_SIZE=.*/ES_HEAP_SIZE=2g/' /etc/init.d/elasticsearch
+##TODO: set mlockall to true: http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-configuration.html#setup-configuration-memory
 
 # configure init script to run in the foreground (I don't like this, but the start script does lots of useful config/setup)
 RUN sed -i.bak 's/--start -b/--start/' /etc/init.d/elasticsearch
