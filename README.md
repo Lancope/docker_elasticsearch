@@ -34,3 +34,4 @@ The above is simpler than passing in custom env vars to the docker container bec
   
 The above could easily be extended to use a custom `elasticsearch.yml` file as well, just alter the init.d script to point to 
 an `elasticsearch.yml` file in the mounted directory hosted from `ES_CONFIG_PATH`.
+
