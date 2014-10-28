@@ -9,6 +9,8 @@ RUN apt-get install -yq elasticsearch=1.2.3
 RUN sed -i.bak 's/--start -b/--start/' /etc/init.d/elasticsearch
 RUN sed -i.bak 's/^DAEMON_OPTS=\"-d /DAEMON_OPTS=\"/' /etc/init.d/elasticsearch
 
+RUN echo "script.disable_dynamic: false" >> /etc/elasticsearch/elasticsearch.yml
+
 VOLUME ["/var/lib/elasticsearch", "/var/log/elasticsearch"]
 EXPOSE 9200 9300
 
