@@ -1,10 +1,9 @@
 FROM lancope/java:trusty_8
 
-# install elastic search
-RUN apt-get install -yq wget
-RUN wget --no-check-certificate -q https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb
-RUN dpkg -i elasticsearch-1.2.1.deb
-RUN rm elasticsearch-1.2.1.deb
+RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
+RUN echo "deb http://packages.elasticsearch.org/elasticsearch/1.2/debian stable main" > /etc/apt/sources.list.d/elasticsearch.sources.list
+RUN apt-get update -o Dir::Etc::sourcelist="sources.list.d/elasticsearch.sources.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
+RUN apt-get install -yq elasticsearch=1.2.3
 
 # configure init script to run in the foreground (I don't like this, but the start script does lots of useful config/setup)
 RUN sed -i.bak 's/--start -b/--start/' /etc/init.d/elasticsearch
