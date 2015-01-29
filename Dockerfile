@@ -1,4 +1,4 @@
-FROM lancope/java:trusty_8
+FROM java:7-jre
 
 RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
 RUN echo "deb http://packages.elasticsearch.org/elasticsearch/1.2/debian stable main" > /etc/apt/sources.list.d/elasticsearch.sources.list
